@@ -34,6 +34,20 @@ class Dashboard extends Component {
     focused: null // we are in unfocused four-panel view
   };
 
+  componentDidMount() {
+    const focused = JSON.parse(localStorage.getItem("focused"));
+
+    if (focused) {
+      this.setState({ focused });
+    }
+  }
+
+  componentDidUpdate(previousProps, previousState) {
+    if (previousState.focused !== this.state.focused) {
+      localStorage.setItem("focused", JSON.stringify(this.state.focused));
+    }
+  }
+
   // set the value of focused back to null if the value of focused is currently set to a panel
   selectPanel(id) {
     this.setState(previousState => ({
