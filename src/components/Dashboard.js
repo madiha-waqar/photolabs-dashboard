@@ -29,7 +29,8 @@ const data = [
 
 class Dashboard extends Component {
   state = {
-    loading: false
+    loading: false,
+    focused: null // we are in unfocused four-panel view
   };
 
   render() {
