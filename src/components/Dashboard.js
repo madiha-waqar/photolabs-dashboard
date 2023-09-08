@@ -34,7 +34,10 @@ class Dashboard extends Component {
   };
 
   render() {
-    const dashboardClasses = classnames("dashboard");
+    // Render dashboardClasses to include the CSS class filtered on state focus
+    const dashboardClasses = classnames("dashboard", {
+      "dashboard--focused": this.state.focused
+    });
 
     if (this.state.loading) {
       return <Loading />;
