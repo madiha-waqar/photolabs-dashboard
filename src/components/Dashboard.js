@@ -34,11 +34,11 @@ class Dashboard extends Component {
     focused: null // we are in unfocused four-panel view
   };
 
-  /* Instance Method */
+  // set the value of focused back to null if the value of focused is currently set to a panel
   selectPanel(id) {
-    this.setState({
-      focused: id
-    });
+    this.setState(previousState => ({
+      focused: previousState.focused !== null ? null : id
+    }));
   }
 
   render() {
