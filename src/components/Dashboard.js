@@ -28,10 +28,18 @@ const data = [
 
 
 class Dashboard extends Component {
+  // initial state setup
   state = {
     loading: false,
     focused: null // we are in unfocused four-panel view
   };
+
+  /* Instance Method */
+  selectPanel(id) {
+    this.setState({
+      focused: id
+    });
+  }
 
   render() {
     // Render dashboardClasses to include the CSS class filtered on state focus
@@ -51,6 +59,7 @@ class Dashboard extends Component {
           id={panel.id}
           label={panel.label}
           value={panel.value}
+          onSelect={event => this.selectPanel(panel.id)}
         />
       ));
 
